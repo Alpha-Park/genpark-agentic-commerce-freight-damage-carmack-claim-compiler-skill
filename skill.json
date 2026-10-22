@@ -1,0 +1,72 @@
+{
+  "name": "genpark-agentic-commerce-freight-damage-carmack-claim-compiler-skill",
+  "version": "1.0.0",
+  "title": "Freight Damage Carmack Amendment Claim Dossier Compiler Skill",
+  "description": "Carmack Amendment (49 U.S.C. \u00a7 14706) freight damage claim dossier, bill of lading notation match, and carrier liability recovery arbiter. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "carmack-amendment",
+    "freight-claims",
+    "cargo-damage",
+    "carrier-liability",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "evaluate_carmack_liability_prima_facie",
+      "description": "Verify 3 elements of prima facie cargo damage case: in good condition at origin, damaged upon delivery, and dollar damages.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "has_clean_bol_origin": {
+            "type": "boolean"
+          },
+          "has_delivery_receipt_exception": {
+            "type": "boolean"
+          },
+          "cargo_invoice_value_usd": {
+            "type": "number"
+          },
+          "salvage_recovered_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "has_clean_bol_origin",
+          "has_delivery_receipt_exception",
+          "cargo_invoice_value_usd"
+        ]
+      }
+    },
+    {
+      "name": "generate_carmack_freight_claim_notice",
+      "description": "Draft formal 9-month statutory claim letter under 49 C.F.R. \u00a7 1005 for immediate carrier payout.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "carrier_scac": {
+            "type": "string"
+          },
+          "pro_number": {
+            "type": "string"
+          },
+          "loss_amount_usd": {
+            "type": "number"
+          },
+          "damage_description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "carrier_scac",
+          "pro_number",
+          "loss_amount_usd"
+        ]
+      }
+    }
+  ]
+}
